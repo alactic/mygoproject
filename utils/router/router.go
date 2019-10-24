@@ -1,8 +1,19 @@
 package router
 
-import "github.com/gorilla/mux"
+import (
+	"log"
+	"net/http"
 
-func Router() *mux.Router {
-	router := mux.NewRouter()
-	return router
+	"github.com/alactic/mygoproject/routes/routerindex"
+	"github.com/gorilla/mux"
+)
+
+func Router() {
+	r := mux.NewRouter()
+	v1 := r.PathPrefix("/api").Subrouter()
+	routerindex.Routerindex(v1)
+
+	if err := http.ListenAndServe(":8000", r); err != nil {
+		log.Fatal("Serving error.")
+	}
 }

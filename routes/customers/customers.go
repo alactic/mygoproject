@@ -1,16 +1,15 @@
 package customers
 
 import (
-	"net/http"
-
 	"github.com/alactic/mygoproject/controllers/customers"
-	"github.com/alactic/mygoproject/utils/router"
+	"github.com/alactic/mygoproject/middlewares/authentication"
+	"github.com/gorilla/mux"
 )
 
-func Customers() {
-	router := router.Router()
-	router.HandleFunc("/customer", customers.CreateCustomerEndpoint).Methods("POST")
-	router.HandleFunc("/customer/{id}", customers.GetCustomerEndpoint).Methods("GET")
-	router.HandleFunc("/customers", customers.GetCustomersEndpoint).Methods("GET")
-	http.Handle("/", router)
+func Customers(router *mux.Router) {
+	router.HandleFunc("/customer", authentication.AuthMiddleware(customers.CreateCustomerEndpoint)).Methods("POST")
+	router.HandleFunc("/customer/{id}", authentication.AuthMiddleware(customers.GetCustomerEndpoint)).Methods("GET")
+	router.HandleFunc("/customers", authentication.AuthMiddleware(customers.GetCustomersEndpoint)).Methods("GET")
+	router.HandleFunc("/uploads", authentication.AuthMiddleware(customers.UploadFile)).Methods("POST")
+	router.HandleFunc("/readFiles", customers.ReadFile).Methods("GET")
 }
