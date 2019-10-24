@@ -13,3 +13,7 @@ func Connection() *gocb.Bucket {
 	bucket, _ = cluster.OpenBucket("demoproject", "")
 	return bucket
 }
+	bucket, _ = cluster.OpenBucket("demoproject", "")
+	console.log("connection 4")
+	return bucket
+}
