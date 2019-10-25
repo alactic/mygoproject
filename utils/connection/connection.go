@@ -4,7 +4,7 @@ import "gopkg.in/couchbase/gocb.v1"
 
 func Connection() *gocb.Bucket {
 	var bucket *gocb.Bucket
-	cluster, _ := gocb.Connect("couchbase://10.4.3.42")
+	cluster, _ := gocb.Connect("couchbase://localhost")
 	cluster.Authenticate(gocb.PasswordAuthenticator{
 		Username: "elvis",
 		Password: "password",

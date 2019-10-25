@@ -129,85 +129,85 @@ func fileExists(filename string) bool {
 	return !info.IsDir()
 }
 
-func ReadFile(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("File read Endpoint Hit")
-	// fmt.Print(path.Ext(path string))
-	if fileExists("uploads/orange.jpg") {
-		fmt.Println("Example file exists")
-		// var Buf bytes.Buffer
-		// in your case file would be fileupload
-		_, _, err := r.FormFile("uploads/orange.jpg")
-		if err != nil {
-			fmt.Println("working with file error :: ", err)
-			// panic(err)
-		} else {
-			fmt.Println("reading file was successful ")
-		}
-		// defer file.Close()
-		// name := strings.Split(header.Filename, ".")
-		// fmt.Printf("File name %s\n", name[0])
-		// // Copy the file data to my buffer
-		// io.Copy(&Buf, file)
-		// // do something with the contents...
-		// // I normally have a struct defined and unmarshal into a struct, but this will
-		// // work as an example
-		// contents := Buf.String()
-		// fmt.Println(contents)
-		// Buf.Reset()
-	} else {
-		fmt.Println("Example file does not exist (or is a directory)")
-	}
-	// file, err := os.Open("uploads/upload.png") // For read access.
-	// defer file.Close()
-	// if err != nil {
-	// 	fmt.Println(err)
-	// }
-	// reader, _ := os.Open("uploads/upload-189240647.png")
-	// var Buf bytes.Buffer
-	// // in your case file would be fileupload
-	// file, header, err := r.FormFile("/uploads/orange.jpg")
-	// if err != nil {
-	// 	fmt.Println("working with file error :: ", err)
-	// 	panic(err)
-	// }
-	// defer file.Close()
-	// name := strings.Split(header.Filename, ".")
-	// fmt.Printf("File name %s\n", name[0])
-	// // Copy the file data to my buffer
-	// io.Copy(&Buf, file)
-	// // do something with the contents...
-	// // I normally have a struct defined and unmarshal into a struct, but this will
-	// // work as an example
-	// contents := Buf.String()
-	// fmt.Println(contents)
-	// I reset the buffer in case I want to use it again
-	// reduces memory allocations in more intense projects
-	// Buf.Reset()
-	// do something else
-	// etc write header
-	return
-}
-	// var Buf bytes.Buffer
-	// // in your case file would be fileupload
-	// file, header, err := r.FormFile("/uploads/orange.jpg")
-	// if err != nil {
-	// 	fmt.Println("working with file error :: ", err)
-	// 	panic(err)
-	// }
-	// defer file.Close()
-	// name := strings.Split(header.Filename, ".")
-	// fmt.Printf("File name %s\n", name[0])
-	// // Copy the file data to my buffer
-	// io.Copy(&Buf, file)
-	// // do something with the contents...
-	// // I normally have a struct defined and unmarshal into a struct, but this will
-	// // work as an example
-	// contents := Buf.String()
-	// fmt.Println(contents)
-	// I reset the buffer in case I want to use it again
-	// reduces memory allocations in more intense projects
-	// Buf.Reset()
-	// do something else
-	// etc write header
-	return
-}
+// func ReadFile(w http.ResponseWriter, r *http.Request) {
+// 	fmt.Println("File read Endpoint Hit")
+// 	// fmt.Print(path.Ext(path string))
+// 	if fileExists("uploads/orange.jpg") {
+// 		fmt.Println("Example file exists")
+// 		// var Buf bytes.Buffer
+// 		// in your case file would be fileupload
+// 		_, _, err := r.FormFile("uploads/orange.jpg")
+// 		if err != nil {
+// 			fmt.Println("working with file error :: ", err)
+// 			// panic(err)
+// 		} else {
+// 			fmt.Println("reading file was successful ")
+// 		}
+// 		// defer file.Close()
+// 		// name := strings.Split(header.Filename, ".")
+// 		// fmt.Printf("File name %s\n", name[0])
+// 		// // Copy the file data to my buffer
+// 		// io.Copy(&Buf, file)
+// 		// // do something with the contents...
+// 		// // I normally have a struct defined and unmarshal into a struct, but this will
+// 		// // work as an example
+// 		// contents := Buf.String()
+// 		// fmt.Println(contents)
+// 		// Buf.Reset()
+// 	} else {
+// 		fmt.Println("Example file does not exist (or is a directory)")
+// 	}
+// 	// file, err := os.Open("uploads/upload.png") // For read access.
+// 	// defer file.Close()
+// 	// if err != nil {
+// 	// 	fmt.Println(err)
+// 	// }
+// 	// reader, _ := os.Open("uploads/upload-189240647.png")
+// 	// var Buf bytes.Buffer
+// 	// // in your case file would be fileupload
+// 	// file, header, err := r.FormFile("/uploads/orange.jpg")
+// 	// if err != nil {
+// 	// 	fmt.Println("working with file error :: ", err)
+// 	// 	panic(err)
+// 	// }
+// 	// defer file.Close()
+// 	// name := strings.Split(header.Filename, ".")
+// 	// fmt.Printf("File name %s\n", name[0])
+// 	// // Copy the file data to my buffer
+// 	// io.Copy(&Buf, file)
+// 	// // do something with the contents...
+// 	// // I normally have a struct defined and unmarshal into a struct, but this will
+// 	// // work as an example
+// 	// contents := Buf.String()
+// 	// fmt.Println(contents)
+// 	// I reset the buffer in case I want to use it again
+// 	// reduces memory allocations in more intense projects
+// 	// Buf.Reset()
+// 	// do something else
+// 	// etc write header
+// 	return
+// }
+// 	// var Buf bytes.Buffer
+// 	// // in your case file would be fileupload
+// 	// file, header, err := r.FormFile("/uploads/orange.jpg")
+// 	// if err != nil {
+// 	// 	fmt.Println("working with file error :: ", err)
+// 	// 	panic(err)
+// 	// }
+// 	// defer file.Close()
+// 	// name := strings.Split(header.Filename, ".")
+// 	// fmt.Printf("File name %s\n", name[0])
+// 	// // Copy the file data to my buffer
+// 	// io.Copy(&Buf, file)
+// 	// // do something with the contents...
+// 	// // I normally have a struct defined and unmarshal into a struct, but this will
+// 	// // work as an example
+// 	// contents := Buf.String()
+// 	// fmt.Println(contents)
+// 	// I reset the buffer in case I want to use it again
+// 	// reduces memory allocations in more intense projects
+// 	// Buf.Reset()
+// 	// do something else
+// 	// etc write header
+// 	return
+// }
