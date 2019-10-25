@@ -11,7 +11,7 @@ import (
 var bucket *gocb.Bucket
 
 func main() {
-	fmt.Println("Starting application 8081 ...")
+	fmt.Println("Starting application 8082 ...")
 
 	bucket = connection.Connection()
 	router.Router()

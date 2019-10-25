@@ -9,7 +9,7 @@ import (
 func Customers(router *mux.Router) {
 	router.HandleFunc("/customer", authentication.AuthMiddleware(customers.CreateCustomerEndpoint)).Methods("POST")
 	router.HandleFunc("/customer/{id}", authentication.AuthMiddleware(customers.GetCustomerEndpoint)).Methods("GET")
-	router.HandleFunc("/customers", authentication.AuthMiddleware(customers.GetCustomersEndpoint)).Methods("GET")
+	router.HandleFunc("/customers", customers.GetCustomersEndpoint).Methods("GET")
 	router.HandleFunc("/uploads", authentication.AuthMiddleware(customers.UploadFile)).Methods("POST")
 	router.HandleFunc("/readFiles", customers.ReadFile).Methods("GET")
 }
