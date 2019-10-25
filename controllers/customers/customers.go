@@ -57,6 +57,9 @@ func GetCustomersEndpoint(response http.ResponseWriter, request *http.Request) {
 	fmt.Println("getting all customers")
 	response.Header().Set("Content-type", "application/json")
 	var customers []Customer
+	fmt.Println("getting all customers 1")
+	fmt.Println("bucket name :: ", bucket.Name())
+	fmt.Println("getting all customers 2")
 	query := gocb.NewN1qlQuery("SELECT META().id, " + bucket.Name() + ".* FROM " + bucket.Name() + " WHERE type = 'customer'")
 	rows, err := bucket.ExecuteN1qlQuery(query, nil)
 	if err != nil {
@@ -175,4 +178,5 @@ func ReadFile(w http.ResponseWriter, r *http.Request) {
 	// do something else
 	// etc write header
 	return
+}
 }
