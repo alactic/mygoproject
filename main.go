@@ -2,8 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"net/http"
 
 	"github.com/alactic/mygoproject/utils/connection"
 	"github.com/alactic/mygoproject/utils/router"
@@ -17,5 +15,5 @@ func main() {
 
 	bucket = connection.Connection()
 	router.Router()
-	
+
 }
