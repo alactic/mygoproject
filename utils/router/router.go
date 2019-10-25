@@ -17,17 +17,3 @@ func Router() {
 		log.Fatal("Serving error.")
 	}
 }
-
-func homePage(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "My Awesome Go App")
-  }
-  
-  func setupRoutes() {
-	http.HandleFunc("/", homePage)
-  }
-  
-  func main() {
-	fmt.Println("Go Web App Started on Port 3000")
-	setupRoutes()
-	http.ListenAndServe(":3091", nil)
-  }

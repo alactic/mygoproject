@@ -2,18 +2,19 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/alactic/mygoproject/utils/connection"
-	"github.com/alactic/mygoproject/utils/router"
-	"gopkg.in/couchbase/gocb.v1"
+	"net/http"
 )
 
-var bucket *gocb.Bucket
+func homePage(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "My Awesome Go App")
+}
+
+func setupRoutes() {
+	http.HandleFunc("/", homePage)
+}
 
 func main() {
-	fmt.Println("Starting application 8082 ...")
-
-	bucket = connection.Connection()
-	router.Router()
-
+	fmt.Println("Go Web App Started on Port 3000")
+	setupRoutes()
+	http.ListenAndServe(":3000", nil)
 }
