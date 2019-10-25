@@ -179,4 +179,3 @@ func ReadFile(w http.ResponseWriter, r *http.Request) {
 	// etc write header
 	return
 }
-}
