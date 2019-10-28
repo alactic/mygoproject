@@ -22,7 +22,7 @@ var bucket *gocb.Bucket = connection.Connection()
 //router.HandleFunc("/customers", GetCustomersEndpoint).Methods("GET")
 // //router.HandleFunc("/customers", GetCustomersEndpoint).Methods("GET")
 func GetIndexEndpoint(response http.ResponseWriter, request *http.Request) {
-	response.Write([]byte(`{"message": "my go docker demo project is working"}`))
+	response.Write([]byte(`{"message": "my go docker demo project is working 222"}`))
 }
 
 //router.HandleFunc("/customer", CreateCustomerEndpoint).Methods("POST")
