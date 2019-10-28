@@ -12,11 +12,13 @@ import (
 var bucket *gocb.Bucket
 
 func main() {
-	fmt.Println("host name :: ", os.Getenv("COUCHBASE_HOST"))
-	fmt.Println("Starting go lang application ...")
 
 	bucket = connection.Connection()
 	router.Router()
+	fmt.Println("bucket name1 :: ", bucket.Name())
+	fmt.Println("host name 1:: ", os.Getenv("COUCHBASE_HOST"))
+	fmt.Println("Starting go1 lang application ...")
+
 	fmt.Println("host name :: ", os.Getenv("COUCHBASE_HOST"))
 	fmt.Println("bucket name :: ", bucket.Name())
 
