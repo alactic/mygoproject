@@ -13,7 +13,7 @@ var bucket *gocb.Bucket
 
 func main() {
 	fmt.Println("host name :: ", os.Getenv("COUCHBASE_HOST"))
-	fmt.Println("Starting application ...")
+	fmt.Println("Starting go application ...")
 
 	bucket = connection.Connection()
 	router.Router()
