@@ -1,14 +1,19 @@
 package connection
 
-import "gopkg.in/couchbase/gocb.v1"
+import (
+	"os"
+
+	"gopkg.in/couchbase/gocb.v1"
+)
 
 func Connection() *gocb.Bucket {
 	var bucket *gocb.Bucket
-	cluster, _ := gocb.Connect("couchbase://localhost")
+	// cluster, _ := gocb.Connect("couchbase://localhost")
+	cluster, _ := gocb.Connect("couchbase://" + os.Getenv("COUCHBASE_HOST"))
 	cluster.Authenticate(gocb.PasswordAuthenticator{
-		Username: "elvis",
-		Password: "password",
+		Username: os.Getenv("USERNAME"),
+		Password: os.Getenv("PASSWORD"),
 	})
-	bucket, _ = cluster.OpenBucket("demoproject", "")
+	bucket, _ = cluster.OpenBucket(os.Getenv("COUCHBASE_NAME"), "")
 	return bucket
 }
