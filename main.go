@@ -12,7 +12,7 @@ import (
 var bucket *gocb.Bucket
 
 func main() {
-	fmt.Println("host :: ", os.Getenv("COUCHBASE_HOST"))
+	fmt.Println("host name :: ", os.Getenv("COUCHBASE_HOST"))
 	fmt.Println("Starting application ...")
 
 	bucket = connection.Connection()
