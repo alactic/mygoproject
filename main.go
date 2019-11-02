@@ -11,7 +11,7 @@ import (
 var bucket *gocb.Bucket
 
 func main() {
-	fmt.Println("bucket name1 ELVIS ")
+	fmt.Println("bucket name 2 ELVIS ")
 	fmt.Println("host name 1:: ", os.Getenv("COUCHBASEHOST"))
 	fmt.Println("Starting go1 lang application ...")
 
