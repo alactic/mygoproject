@@ -22,11 +22,11 @@ var bucket *gocb.Bucket = connection.Connection()
 //router.HandleFunc("/customers", GetCustomersEndpoint).Methods("GET")
 // //router.HandleFunc("/customers", GetCustomersEndpoint).Methods("GET")
 func GetIndexEndpoint(response http.ResponseWriter, request *http.Request) {
-	fmt.Println("host name :: ", os.Getenv("COUCHBASE_HOST"))
-	fmt.Println("bucket name :: ", os.Getenv("COUCHBASE_NAME"))
-	fmt.Println("bucket name :: ", os.Getenv("USERNAME"))
-	fmt.Println("bucket name :: ", os.Getenv("PASSWORD"))
-	fmt.Println("bucket name :: ", bucket.Name())
+	// fmt.Println("host name :: ", os.Getenv("COUCHBASE_HOST"))
+	// fmt.Println("bucket name :: ", os.Getenv("COUCHBASE_NAME"))
+	// fmt.Println("bucket name :: ", os.Getenv("USERNAME"))
+	// fmt.Println("bucket name :: ", os.Getenv("PASSWORD"))
+	// fmt.Println("bucket name :: ", bucket.Name())
 
 	response.Write([]byte(`{"message": "my go docker demo project is working 222"}`))
 }
