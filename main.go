@@ -5,7 +5,6 @@ import (
 	"github.com/alactic/mygoproject/utils/connection"
 	"github.com/alactic/mygoproject/utils/router"
 	"gopkg.in/couchbase/gocb.v1"
-	"os"
 )
 
 var bucket *gocb.Bucket
