@@ -26,9 +26,9 @@ func GetIndexEndpoint(response http.ResponseWriter, request *http.Request) {
 	// fmt.Println("bucket name :: ", os.Getenv("COUCHBASE_NAME"))
 	// fmt.Println("bucket name :: ", os.Getenv("USERNAME"))
 	// fmt.Println("bucket name :: ", os.Getenv("PASSWORD"))
-	// fmt.Println("bucket name :: ", bucket.Name())
+	fmt.Println("bucket name :: ", bucket)
 
-	response.Write([]byte(`{"message": "my go docker demo project is working 222"}`))
+	response.Write([]byte(`{"message": "my go docker demo project is working demo2"}`))
 }
 
 //router.HandleFunc("/customer", CreateCustomerEndpoint).Methods("POST")
