@@ -37,11 +37,14 @@ func CreateCustomerEndpoint(response http.ResponseWriter, request *http.Request)
 	var customer Customer
 	_ = json.NewDecoder(request.Body).Decode(&customer)
 	id := uuid.Must(uuid.NewV4()).String()
+	fmt.Println("bucket :: ", bucket)
 	fmt.Println("id :: ", id)
 	customer.Type = "customer"
 	customer.Id = id
+	fmt.Println("customer :: ", customer)
 	_, err := bucket.Insert(id, customer, 0)
 	if err != nil {
+		fmt.Println("error :: ", err)
 		response.WriteHeader(500)
 		response.Write([]byte(`{"message": "` + err.Error() + `" }`))
 		return

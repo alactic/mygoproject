@@ -11,11 +11,11 @@ func Connection() *gocb.Bucket {
 	var bucket *gocb.Bucket
 	// cluster, _ := gocb.Connect("couchbase://localhost")
 	fmt.Println("host :: ", os.Getenv("COUCHBASEHOST"))
-	cluster, _ := gocb.Connect("couchbase://" + os.Getenv("COUCHBASEHOST"))
+	cluster, _ := gocb.Connect("couchbase://localhost")
 	cluster.Authenticate(gocb.PasswordAuthenticator{
-		Username: os.Getenv("USERNAME"),
-		Password: os.Getenv("PASSWORD"),
+		Username: "user",
+		Password: "password",
 	})
-	bucket, _ = cluster.OpenBucket(os.Getenv("COUCHBASENAME"), "")
+	bucket, _ = cluster.OpenBucket("mygodb", "")
 	return bucket
 }
