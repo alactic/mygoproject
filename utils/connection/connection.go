@@ -2,7 +2,6 @@ package connection
 
 import (
 	"fmt"
-	"os"
 
 	"gopkg.in/couchbase/gocb.v1"
 )
@@ -10,15 +9,12 @@ import (
 func Connection() *gocb.Bucket {
 	var bucket *gocb.Bucket
 	// cluster, _ := gocb.Connect("couchbase://localhost")
-	fmt.Println("host :: ", os.Getenv("COUCHBASE_HOST"))
-	fmt.Println("COUCHBASE_ADMINISTRATOR_USERNAME :: ", os.Getenv("COUCHBASE_ADMINISTRATOR_USERNAME"))
-	fmt.Println("COUCHBASE_ADMINISTRATOR_PASSWORD :: ", os.Getenv("COUCHBASE_ADMINISTRATOR_PASSWORD"))
-	cluster, _ := gocb.Connect("couchbase://" + os.Getenv("COUCHBASE_HOST"))
+	cluster, _ := gocb.Connect("couchbase://172.17.0.2")
 	cluster.Authenticate(gocb.PasswordAuthenticator{
-		Username: os.Getenv("COUCHBASE_ADMINISTRATOR_USERNAME"),
-		Password: os.Getenv("COUCHBASE_ADMINISTRATOR_PASSWORD"),
+		Username: "Administrator",
+		Password: "password",
 	})
-	bucket, _ = cluster.OpenBucket(os.Getenv("COUCHBASE_BUCKET"), "")
+	bucket, _ = cluster.OpenBucket("default", "")
 	fmt.Println("host bucket:: ", bucket)
 
 	return bucket

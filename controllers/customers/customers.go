@@ -19,20 +19,15 @@ type Customer = customers.Customer
 
 var bucket *gocb.Bucket = connection.Connection()
 
-//router.HandleFunc("/customers", GetCustomersEndpoint).Methods("GET")
 // //router.HandleFunc("/customers", GetCustomersEndpoint).Methods("GET")
 func GetIndexEndpoint(response http.ResponseWriter, request *http.Request) {
-	// fmt.Println("host name :: ", os.Getenv("COUCHBASE_HOST"))
-	// fmt.Println("bucket name :: ", os.Getenv("COUCHBASE_NAME"))
-	// fmt.Println("bucket name :: ", os.Getenv("USERNAME"))
-	// fmt.Println("bucket name :: ", os.Getenv("PASSWORD"))
-	fmt.Println("bucket name :: ", bucket)
-
 	response.Write([]byte(`{"message": "my go docker demo project is working demo2"}`))
 }
 
 //router.HandleFunc("/customer", CreateCustomerEndpoint).Methods("POST")
 func CreateCustomerEndpoint(response http.ResponseWriter, request *http.Request) {
+	fmt.Println("cors")
+	response.Header().Set("Access-Control-Allow-Origin", "*")
 	response.Header().Set("Content-Type", "application/json")
 	var customer Customer
 	_ = json.NewDecoder(request.Body).Decode(&customer)
