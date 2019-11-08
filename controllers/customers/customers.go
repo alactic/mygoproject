@@ -55,6 +55,10 @@ func GetCustomerEndpoint(response http.ResponseWriter, request *http.Request) {
 	customer.Id = routerParams["id"]
 	_, err := bucket.Get(routerParams["id"], &customer)
 	if err != nil {
+		if err.Error() == "key not found" {
+			response.Write([]byte(`{"data": "{}"}`))
+			return
+		}
 		response.WriteHeader(500)
 		response.Write([]byte(`{"message": "` + err.Error() + `"}`))
 		return

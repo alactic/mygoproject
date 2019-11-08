@@ -35,7 +35,10 @@ func CreateStaffEndpoint(response http.ResponseWriter, request *http.Request) {
 		response.Write([]byte(`{"message": "` + err.Error() + `" }`))
 		return
 	}
-	response.Write([]byte(`{ "id": "` + id + `"}`))
+	details := make(map[string]Staff)
+	details["data"] = staff
+	json.NewEncoder(response).Encode(details)
+	// response.Write([]byte(`{ "id": "` + id + `"}`))
 }
 
 //router.HandleFunc("/staff/{id}", GetStaffEndpoint).Methods("GET")
@@ -61,6 +64,7 @@ func GetAllStaffEndpoint(response http.ResponseWriter, request *http.Request) {
 	query := gocb.NewN1qlQuery("SELECT META().id, " + bucket.Name() + ".* FROM " + bucket.Name() + " WHERE type = 'staff'")
 	rows, err := bucket.ExecuteN1qlQuery(query, nil)
 	if err != nil {
+		fmt.Println("staffing error :: ", err)
 		response.WriteHeader(500)
 		response.Write([]byte(`{"message": "` + err.Error() + `"}`))
 		return
@@ -69,7 +73,10 @@ func GetAllStaffEndpoint(response http.ResponseWriter, request *http.Request) {
 	for rows.Next(&row) {
 		staff = append(staff, row)
 	}
-	json.NewEncoder(response).Encode(staff)
+	details := make(map[string][]Staff)
+	details["data"] = staff
+	fmt.Println("staff :: ", details)
+	json.NewEncoder(response).Encode(details)
 }
 
 func UploadFile(w http.ResponseWriter, r *http.Request) {
