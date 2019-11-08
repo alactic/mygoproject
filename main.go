@@ -9,6 +9,7 @@ import (
 var bucket *gocb.Bucket
 
 func main() {
+	fmt.Println("starting application")
 	bucket = connection.Connection()
 	router.Router()
 }
