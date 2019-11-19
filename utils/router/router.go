@@ -37,7 +37,7 @@ func Router() {
 	headers := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})
 	methods := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS"})
 	origins := handlers.AllowedOrigins([]string{"*"})
-	log.Fatal(http.ListenAndServe("0.0.0.0:8805", handlers.CORS(headers, methods, origins)(router)))
+	log.Fatal(http.ListenAndServe("192.168.0.107:8805", handlers.CORS(headers, methods, origins)(router)))
 
 	// Apply the CORS middleware to our top-level router, with the defaults.
 }

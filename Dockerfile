@@ -24,7 +24,7 @@ RUN apk update && apk add git
  
 COPY . /go/src/app/
  
-WORKDIR /go/src/app+
+WORKDIR /go/src/app
 
  
 RUN go get -d -v
