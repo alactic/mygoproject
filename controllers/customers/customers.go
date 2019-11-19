@@ -33,12 +33,14 @@ func CreateCustomerEndpoint(response http.ResponseWriter, request *http.Request)
 	_ = json.NewDecoder(request.Body).Decode(&customer)
 	id := uuid.Must(uuid.NewV4()).String()
 	fmt.Println("bucket :: ", bucket)
-	fmt.Println("id :: ", id)
+	fmt.Println("id no :: ", id)
+	fmt.Println("bucket :: ", bucket)
 	customer.Type = "customer"
 	customer.Id = id
-	fmt.Println("customer :: ", customer)
+
 	_, err := bucket.Insert(id, customer, 0)
 	if err != nil {
+		fmt.Println("bucket :: ", &bucket)
 		fmt.Println("error :: ", err)
 		response.WriteHeader(500)
 		response.Write([]byte(`{"message": "` + err.Error() + `" }`))
@@ -69,12 +71,8 @@ func GetCustomerEndpoint(response http.ResponseWriter, request *http.Request) {
 //router.HandleFunc("/customers", GetCustomersEndpoint).Methods("GET")
 // //router.HandleFunc("/customers", GetCustomersEndpoint).Methods("GET")
 func GetCustomersEndpoint(response http.ResponseWriter, request *http.Request) {
-	fmt.Println("getting all customers")
 	response.Header().Set("Content-type", "application/json")
 	var customers []Customer
-	fmt.Println("getting all customers 1")
-	fmt.Println("bucket name :: ", bucket.Name())
-	fmt.Println("getting all customers 2")
 	query := gocb.NewN1qlQuery("SELECT META().id, " + bucket.Name() + ".* FROM " + bucket.Name() + " WHERE type = 'customer'")
 	rows, err := bucket.ExecuteN1qlQuery(query, nil)
 	if err != nil {
@@ -98,16 +96,13 @@ func UploadFile(w http.ResponseWriter, r *http.Request) {
 	// it also returns the FileHeader so we can get the Filename,
 	// the Header and the size of the file
 	fmt.Println("my file", r.FormValue("myFile"))
-	file, handler, err := r.FormFile("myFile")
+	file, _, err := r.FormFile("myFile")
 	if err != nil {
 		fmt.Println("Error Retrieving the File")
 		fmt.Println(err)
 		return
 	}
 	defer file.Close()
-	fmt.Printf("Uploaded File: %+v\n", handler.Filename)
-	fmt.Printf("File Size: %+v\n", handler.Size)
-	fmt.Printf("MIME Header: %+v\n", handler.Header)
 
 	// Create a temporary file within our temp-images directory that follows
 	// a particular naming pattern
