@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/alactic/mygoproject/utils/connection"
-	"github.com/alactic/mygoproject/utils/router"
+	"github.com/alactic/ecommerce/mygoproject/utils/router"
 	"gopkg.in/couchbase/gocb.v1"
 )
 
